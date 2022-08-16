@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44041d0bbf690c94dace448b4f66fdf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 1.5
   range: 32
   prefabPipe: {fileID: 8342218911109938780, guid: 8104a74147393bd458a35437f250ced6, type: 3}
 --- !u!1 &1568867364
