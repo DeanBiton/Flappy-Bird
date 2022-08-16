@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //before build change to Input.GetMouseButtonDown(0)
         {
             rigidbody.velocity = Vector3.up * velocity;
             // rigidbody.velocity = Vector2.zero;
