@@ -14,4 +14,9 @@ public class Pipe : MonoBehaviour
         if(transform.position.x < -35f)
             Destroy(gameObject);
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Score.score++;
+    }
 }

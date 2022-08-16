@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GeneratePipes : MonoBehaviour
 {
-    private bool endGame = false;
     [SerializeField] private float cooldown = 2;
     [SerializeField] private float range = 32f;
     [SerializeField] private GameObject prefabPipe;
+    
+    private bool endGame = false;
     private Vector3 pipeStartPosition;
+    
     void Start()
     {
         pipeStartPosition = prefabPipe.transform.position;

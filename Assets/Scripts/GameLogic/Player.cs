@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 0;
+    //[SerializeField] private float jumpForce = 0;
     [SerializeField] private float velocity = 0;
+    [SerializeField] private GameManager gameManager;
+
     private Rigidbody2D rigidbody;
+
     void Start()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -20,5 +23,10 @@ public class Player : MonoBehaviour
             // rigidbody.velocity = Vector2.zero;
             // rigidbody.AddForce(jumpForce*Vector3.up);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameManager.gameOver();
     }
 }
