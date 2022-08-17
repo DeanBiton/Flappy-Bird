@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject canvas;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject prefabPlayer;
     [SerializeField] private GameObject environment;
+    [SerializeField] private GameObject canvas;
 
+    private GameObject player;
     private bool isGameReady;
 
     void Start()
     {
-        //mainUI = canvas.GetComponent<MainUI>();
+        canvas.GetComponent<MainUI>().setChildren();
         gameReady();
     }
 
@@ -29,32 +31,31 @@ public class GameManager : MonoBehaviour
     {
         isGameReady = true;
         Time.timeScale = 1;
-        player.GetComponent<Rigidbody2D>().isKinematic = true;
-        environment.GetComponent<GeneratePipes>().enabled = false;
+        if(player != null)
+            Destroy(player);
+        Score.score = 0;
+        player = Instantiate(prefabPlayer);
+        player.GetComponent<Player>().gameReady();
+        environment.GetComponent<GeneratePipes>().gameReady();
         canvas.GetComponent<MainUI>().gameReady();
     }
 
     public void gameStart()
     {
-        player.GetComponent<Rigidbody2D>().isKinematic = false;
-        environment.GetComponent<GeneratePipes>().enabled = true;
+        player.GetComponent<Player>().gameStart();
+        environment.GetComponent<GeneratePipes>().gameStart();
         canvas.GetComponent<MainUI>().gameStart();
     }
 
     public void gameOver()
     {
         Time.timeScale = 0;
-         if(canvas == null)
-         {
-            Debug.Log("canvas is the problem");
-         }
-        else if(canvas.GetComponent<MainUI>() == null)
-        {
-            Debug.Log("Here is the problem");
-        }
-        else
-        {
-            canvas.GetComponent<MainUI>().gameOver();
-        }
+        environment.GetComponent<GeneratePipes>().gameOver();
+        canvas.GetComponent<MainUI>().gameOver();
+    }
+
+    public void menuBtn()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

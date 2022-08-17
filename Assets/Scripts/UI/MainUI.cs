@@ -4,33 +4,48 @@ using UnityEngine;
 
 public class MainUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject score;
+    private GameObject readyScreen;
+    private GameObject endScreen;
+    [SerializeField] private GameObject finalScoreTxt;
+    [SerializeField] private GameObject bestScoreTxt;
+
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
+    public void setChildren()
+    {
+        score = transform.GetChild(0).gameObject;
+        readyScreen = transform.GetChild(1).gameObject;
+        endScreen = transform.GetChild(2).gameObject;
+    }
+
     public void gameReady()
     {
-        transform.GetChild(2).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
+        score.SetActive(false);
+        readyScreen.SetActive(false);
+        endScreen.SetActive(true);
+
     }
 
     public void gameStart()
     {
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(false);
+        score.SetActive(true);
+        readyScreen.SetActive(false);
+        endScreen.SetActive(false);
     }
 
     public void gameOver()
     {
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
+        score.SetActive(false);
+        readyScreen.SetActive(true);
+        endScreen.SetActive(false);
+        finalScoreTxt.GetComponent<UnityEngine.UI.Text>().text = Score.score.ToString();
     }
 }

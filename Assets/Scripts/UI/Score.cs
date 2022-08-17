@@ -16,3 +16,5 @@ public class Score : MonoBehaviour
         GetComponent<UnityEngine.UI.Text>().text = score.ToString();
     }
 }
+
+//endScreen.GetComponent<Transform>().transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<UnityEngine.UI.Text>().text = Score.score.ToString();
