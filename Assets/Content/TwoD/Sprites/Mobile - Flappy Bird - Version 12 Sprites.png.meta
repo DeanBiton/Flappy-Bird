@@ -167,6 +167,9 @@ TextureImporter:
   - first:
       213: 3869963733588150954
     second: button share
+  - first:
+      213: -7390568835900721232
+    second: New
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1418,6 +1421,27 @@ TextureImporter:
       bones: []
       spriteID: aaa8a22038fd4b530800000000000000
       internalID: 3869963733588150954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 3
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7b018fccc6f6990800000000000000
+      internalID: -7390568835900721232
       vertices: []
       indices: 
       edges: []

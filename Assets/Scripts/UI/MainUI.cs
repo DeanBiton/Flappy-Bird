@@ -9,15 +9,7 @@ public class MainUI : MonoBehaviour
     private GameObject endScreen;
     [SerializeField] private GameObject finalScoreTxt;
     [SerializeField] private GameObject bestScoreTxt;
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] private GameObject newBestImage;
 
     public void setChildren()
     {
@@ -31,7 +23,7 @@ public class MainUI : MonoBehaviour
         score.SetActive(false);
         readyScreen.SetActive(false);
         endScreen.SetActive(true);
-
+        newBestImage.SetActive(false);
     }
 
     public void gameStart()
@@ -47,5 +39,11 @@ public class MainUI : MonoBehaviour
         readyScreen.SetActive(true);
         endScreen.SetActive(false);
         finalScoreTxt.GetComponent<UnityEngine.UI.Text>().text = Score.score.ToString();
+        bestScoreTxt.GetComponent<UnityEngine.UI.Text>().text = Score.bestScore.ToString();
+    }
+
+    public void newBestScore()
+    {
+        newBestImage.SetActive(true);
     }
 }

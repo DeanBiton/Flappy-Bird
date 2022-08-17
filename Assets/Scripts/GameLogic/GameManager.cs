@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject prefabPlayer;
     [SerializeField] private GameObject environment;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject score;
 
     private GameObject player;
     private bool isGameReady;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         player = Instantiate(prefabPlayer);
         player.GetComponent<Player>().gameReady();
         environment.GetComponent<GeneratePipes>().gameReady();
+        environment.GetComponent<GenerateRain>().gameReady();
         canvas.GetComponent<MainUI>().gameReady();
     }
 
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         player.GetComponent<Player>().gameStart();
         environment.GetComponent<GeneratePipes>().gameStart();
+        environment.GetComponent<GenerateRain>().gameStart();
         canvas.GetComponent<MainUI>().gameStart();
     }
 
@@ -51,6 +54,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         environment.GetComponent<GeneratePipes>().gameOver();
+        environment.GetComponent<GenerateRain>().gameOver();
+        score.GetComponent<Score>().gameOver();
         canvas.GetComponent<MainUI>().gameOver();
     }
 

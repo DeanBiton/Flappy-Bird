@@ -15,8 +15,6 @@ public class GeneratePipes : MonoBehaviour
         pipeStartPosition = prefabPipe.transform.position;
     }
 
-    void Update() {}
-
     public IEnumerator generatePipes()
     {
         while(true)

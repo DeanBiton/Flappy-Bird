@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.gameOver();
+        if(collision.gameObject.name != "ceiling")
+            gameManager.gameOver();
     }
 
     public void gameReady()
