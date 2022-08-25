@@ -6,6 +6,8 @@ public class Pipe : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
 
+    public SoundManager soundManager;
+
     void Update()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
@@ -16,5 +18,6 @@ public class Pipe : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         Score.score++;
+        soundManager.point();
     }
 }
