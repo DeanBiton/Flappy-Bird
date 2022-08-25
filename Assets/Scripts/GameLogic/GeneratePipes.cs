@@ -7,9 +7,12 @@ public class GeneratePipes : MonoBehaviour
     [SerializeField] private float cooldown = 2;
     [SerializeField] private float range = 32f;
     [SerializeField] private GameObject prefabPipe;
-    
+    [SerializeField] private GameObject soundManager;
+
     private Vector3 pipeStartPosition;
     private Coroutine generator;
+    private GameObject pipe;
+
     void Start()
     {
         pipeStartPosition = prefabPipe.transform.position;
@@ -19,7 +22,8 @@ public class GeneratePipes : MonoBehaviour
     {
         while(true)
         {
-            Instantiate(prefabPipe, pipeStartPosition + new Vector3(0,Random.Range(0f,range),0), Quaternion.identity);
+            pipe = Instantiate(prefabPipe, pipeStartPosition + new Vector3(0,Random.Range(0f,range),0), Quaternion.identity);
+            pipe.GetComponent<Pipe>().soundManager = soundManager.GetComponent<SoundManager>();
             yield return new WaitForSeconds(cooldown);
         }
     }

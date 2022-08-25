@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject environment;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject score;
+    [SerializeField] private GameObject soundManager;
 
     private GameObject player;
     private bool isGameReady;
@@ -36,10 +37,12 @@ public class GameManager : MonoBehaviour
             Destroy(player);
         Score.score = 0;
         player = Instantiate(prefabPlayer);
+        player.GetComponent<Player>().soundManager = soundManager.GetComponent<SoundManager>();
         player.GetComponent<Player>().gameReady();
         environment.GetComponent<GeneratePipes>().gameReady();
         environment.GetComponent<GenerateRain>().gameReady();
         canvas.GetComponent<MainUI>().gameReady();
+        soundManager.GetComponent<SoundManager>().gameReady();
     }
 
     public void gameStart()
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
         environment.GetComponent<GenerateRain>().gameOver();
         score.GetComponent<Score>().gameOver();
         canvas.GetComponent<MainUI>().gameOver();
+        soundManager.GetComponent<SoundManager>().gameOver();
     }
 
     public void menuBtn()
