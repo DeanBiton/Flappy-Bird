@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //[SerializeField] private float jumpForce = 0;
     [SerializeField] private float velocity = 0;
-    [SerializeField] private GameManager gameManager;
+    public GameObject soundsManager;
 
+    private GameManager gameManager;
     private Rigidbody2D rigidbody;
+    private Vector3 playerStartPosition;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        playerStartPosition = new Vector3(-9.5f,1f,75f);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
+//GetComponent<GeneratePipes>()
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //before build change to Input.GetMouseButtonDown(0)
+        if (Input.GetMouseButtonDown(0))
         {
             rigidbody.velocity = Vector3.up * velocity;
-            // rigidbody.velocity = Vector2.zero;
-            // rigidbody.AddForce(jumpForce*Vector3.up);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        gameManager.gameOver();
+        if(collision.gameObject.name != "ceiling")
+            gameManager.gameOver();
+    }
+
+    public void gameReady()
+    {
+        GetComponent<Rigidbody2D>().isKinematic = true;
+    }
+
+    public void gameStart()
+    {
+        GetComponent<Rigidbody2D>().isKinematic = false;
     }
 }

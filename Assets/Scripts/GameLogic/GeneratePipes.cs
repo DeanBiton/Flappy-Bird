@@ -8,26 +8,37 @@ public class GeneratePipes : MonoBehaviour
     [SerializeField] private float range = 32f;
     [SerializeField] private GameObject prefabPipe;
     
-    private bool endGame = false;
     private Vector3 pipeStartPosition;
-    
+    private Coroutine generator;
     void Start()
     {
         pipeStartPosition = prefabPipe.transform.position;
-        StartCoroutine(generatePipes());
     }
 
-    void Update()
+    public IEnumerator generatePipes()
     {
-
-    }
-
-    IEnumerator generatePipes()
-    {
-        while(!endGame)
+        while(true)
         {
-            yield return new WaitForSeconds(cooldown);
             Instantiate(prefabPipe, pipeStartPosition + new Vector3(0,Random.Range(0f,range),0), Quaternion.identity);
+            yield return new WaitForSeconds(cooldown);
         }
+    }
+
+    public void gameReady()
+    {
+        GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
+        foreach(GameObject pipe in pipes){
+            Destroy(pipe);
+        }
+    }
+
+    public void gameStart()
+    {
+        generator = StartCoroutine(generatePipes());
+    }
+
+    public void gameOver()
+    {
+        StopCoroutine(generator);
     }
 }
