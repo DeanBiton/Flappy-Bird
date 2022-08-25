@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isGameReady)
+        if(Input.GetMouseButtonDown(0) && isGameReady)
         {
             isGameReady = false;
             gameStart();

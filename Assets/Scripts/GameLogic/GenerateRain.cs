@@ -38,10 +38,10 @@ public class GenerateRain : MonoBehaviour
             if(Random.Range(0f,1f) < rainAppearancePercentage)
             {
                 rain.GetComponent<ParticleSystem>().Play();
-                player.GetComponent<Rigidbody2D>().gravityScale *= 2;
+                player.GetComponent<Rigidbody2D>().gravityScale *= 1.5f;
                 yield return new WaitForSeconds(Random.Range(rainDurationRangeStart,rainDurationRangeEnd));
                 rain.GetComponent<ParticleSystem>().Stop();
-                player.GetComponent<Rigidbody2D>().gravityScale /= 2;
+                player.GetComponent<Rigidbody2D>().gravityScale /= 1.5f;
             }
         }
     }

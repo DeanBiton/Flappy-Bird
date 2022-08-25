@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float velocity = 0;
+    public GameObject soundsManager;
 
     private GameManager gameManager;
     private Rigidbody2D rigidbody;
@@ -16,10 +17,10 @@ public class Player : MonoBehaviour
         playerStartPosition = new Vector3(-9.5f,1f,75f);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
+//GetComponent<GeneratePipes>()
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //before build change to Input.GetMouseButtonDown(0)
+        if (Input.GetMouseButtonDown(0))
         {
             rigidbody.velocity = Vector3.up * velocity;
         }
