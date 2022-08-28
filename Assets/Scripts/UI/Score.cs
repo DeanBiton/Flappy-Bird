@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
     
     public void gameOver()
     {
-        string currentDate = DateTime.UtcNow.ToString("MM-dd-yyyy");
+        string currentDate = DateTime.UtcNow.ToString("dd-MM-yyyy");
         bool save = false;
 
         if(score > topScores[4])
