@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         environment.GetComponent<GeneratePipes>().gameStart();
         environment.GetComponent<GenerateRain>().gameStart();
         canvas.GetComponent<MainUI>().gameStart();
+        soundManager.GetComponent<SoundManager>().gameStart();
     }
 
     public void gameOver()

@@ -6,13 +6,9 @@ public class ScoreBoard : MonoBehaviour
 {
     private GameObject []lines;
     private int scoresNumber = 5;
-    private Score scoreObject;
     void Start()
     {
-        //scoreObject = GameObject.Find("Score").GetComponent<Score>();
-        //scoreObject.loadScores();
         this.loadScores();
-
         lines = new GameObject[scoresNumber];
         for (int i = 0; i < scoresNumber; i++)
         {

@@ -10,13 +10,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        menu = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
-        scoreboard = transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-    }
-
-    void Update()
-    {
-        
+        menu = transform.GetChild(0).GetChild(0).gameObject;
+        scoreboard = transform.GetChild(0).GetChild(1).gameObject;
     }
 
     public void playBtn()
