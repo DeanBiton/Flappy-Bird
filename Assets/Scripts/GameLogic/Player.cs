@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     public SoundManager soundManager;
 
     private GameManager gameManager;
-    private Rigidbody2D rigidbody;
     private Vector3 playerStartPosition;
+    private new Rigidbody2D rigidbody;
 
     void Start()
     {

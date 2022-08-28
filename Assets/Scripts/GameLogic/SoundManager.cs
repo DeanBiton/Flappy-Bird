@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource jumpAudio; 
     private AudioSource pointAudio; 
     private AudioSource swooshingAudio; 
-
+    private bool isGamestart;
     void Start()
     {
         dieAudio = transform.GetChild(0).gameObject.GetComponent<AudioSource>();
@@ -26,16 +26,24 @@ public class SoundManager : MonoBehaviour
 
     public void point()
     {
-        pointAudio.Play();
+        if(isGamestart)
+            pointAudio.Play();
     }
 
     public void gameReady()
     {
+        isGamestart = false;
         swooshingAudio.Play();
+    }
+
+    public void gameStart()
+    {
+        isGamestart = true;
     }
 
     public void gameOver()
     {
+        isGamestart = false;
         hitAudio.Play();
         dieAudio.Play();
     }
