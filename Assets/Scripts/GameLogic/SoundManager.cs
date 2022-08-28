@@ -21,7 +21,8 @@ public class SoundManager : MonoBehaviour
 
     public void jump()
     {
-        jumpAudio.Play();
+        if(isGamestart)
+            jumpAudio.Play();
     }
 
     public void point()
